@@ -26,10 +26,13 @@ export default function Albums() {
   );
 
   return (
-    <main id="albums" className="flex flex-col items-center h-screen p-6">
+    <main
+      id="albums"
+      className="flex flex-col items-center justify-center h-screen p-6 bg-gray-50"
+    >
       <AlbumSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         {filteredAlbums.map((album) => (
           <div
             key={album.id}
