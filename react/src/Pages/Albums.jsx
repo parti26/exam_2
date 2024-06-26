@@ -28,34 +28,36 @@ export default function Albums() {
   return (
     <main
       id="albums"
-      className="flex flex-col items-center justify-center h-screen p-6 bg-gray-50"
+      className="flex flex-col items-center justify-center h-screen p-4 bg-gray-50"
     >
       <AlbumSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {filteredAlbums.map((album) => (
-          <div
-            key={album.id}
-            className="bg-white shadow-md border border-gray-300 rounded-lg p-4 cursor-pointer"
-            onClick={() =>
-              setOpenAlbum(openAlbum === album.id ? null : album.id)
-            }
-          >
-            <h2 className="text-2xl font-bold">{album.name}</h2>
-            {openAlbum === album.id && (
-              <div className="mt-2">
-                <p>Release Year: {album.releaseYear}</p>
-                <p>Popularity: {album.popularity}</p>
-                <Link
-                  to={`/albums/${album.id}/hits`}
-                  className="text-blue-500 underline"
-                >
-                  View Hits
-                </Link>
-              </div>
-            )}
-          </div>
-        ))}
+      <div className="flex justify-center items-center flex-grow w-full">
+        <div className="items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {filteredAlbums.map((album) => (
+            <div
+              key={album.id}
+              className="flex justify-center bg-white shadow-md border border-gray-300 rounded-lg p-4 cursor-pointer"
+              onClick={() =>
+                setOpenAlbum(openAlbum === album.id ? null : album.id)
+              }
+            >
+              <h2 className="text-2xl font-bold">{album.name}</h2>
+              {openAlbum === album.id && (
+                <div className="mt-2">
+                  <p>Release Year: {album.releaseYear}</p>
+                  <p>Popularity: {album.popularity}</p>
+                  <Link
+                    to={`/albums/${album.id}/hits`}
+                    className="text-blue-500 underline"
+                  >
+                    View Hits
+                  </Link>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </main>
   );
