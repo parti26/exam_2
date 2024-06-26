@@ -1,4 +1,7 @@
-import "./App.css";
+import React from "react";
+import CharacterCard from "./Components/CharacterCard";
+import Header from "./Components/Header";
+import "./index.css";
 
 const characters = [
   { name: "Naruto Uzumaki", status: "Alive" },
@@ -13,8 +16,19 @@ const characters = [
   { name: "Minato Namikaze", status: "Deceased" },
 ];
 
-const App = () => {
-  return <div className="App">App</div>;
-};
+function App() {
+  return (
+    <div className="App">
+      <Header />
+      <main className="px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {characters.map((character) => (
+            <CharacterCard key={character.name} character={character} />
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+}
 
 export default App;
